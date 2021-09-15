@@ -12,6 +12,9 @@ class ParkingSpot
   Vehicle assignedVehicle;
 
 public:
+  ParkingSpot()
+  {
+  }
   ParkingSpot(string parkingSpotId, ParkingSpotType parkingSpotType)
   {
     this->parkingSpotId = parkingSpotId;
@@ -35,8 +38,16 @@ public:
     this->isFree = true;
     return vehicle;
   }
+  string getParkingSpotId()
+  {
+    return parkingSpotId;
+  }
   void showSpotDetails()
   {
     cout << "parkingSpotId " << parkingSpotId << " parkingSpotType " << parkingSpotType << endl;
+  }
+  ParkingSpotType getParkingSpotType()
+  {
+    return parkingSpotType;
   }
 };

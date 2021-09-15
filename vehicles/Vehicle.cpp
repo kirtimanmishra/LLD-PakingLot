@@ -21,4 +21,12 @@ public:
   {
     cout << "licenceNumber " << licenceNumber << " vehicleType " << vehicleType << endl;
   }
+  VehicleType getVehicleType()
+  {
+    return vehicleType;
+  }
+  string getLicenceNumber()
+  {
+    return licenceNumber;
+  }
 };
