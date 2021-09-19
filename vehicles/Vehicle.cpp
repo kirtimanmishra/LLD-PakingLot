@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
-#include "VehicleType.cpp"
+#include "../vehicles/VehicleType.cpp"
+
 #pragma once
 
 using namespace std;

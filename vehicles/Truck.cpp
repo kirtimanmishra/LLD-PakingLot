@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#include "Vehicle.cpp"
+#include "../vehicles/Vehicle.cpp"
 #pragma once
 
 class Truck : public Vehicle

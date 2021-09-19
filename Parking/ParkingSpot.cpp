@@ -42,12 +42,12 @@ public:
   {
     return parkingSpotId;
   }
-  void showSpotDetails()
-  {
-    cout << "parkingSpotId " << parkingSpotId << " parkingSpotType " << parkingSpotType << endl;
-  }
   ParkingSpotType getParkingSpotType()
   {
     return parkingSpotType;
+  }
+  void showSpotDetails()
+  {
+    cout << "Spot Details --- parkingSpotId " << parkingSpotId << " parkingSpotType " << parkingSpotType << endl;
   }
 };

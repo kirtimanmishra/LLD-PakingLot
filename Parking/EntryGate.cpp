@@ -3,7 +3,6 @@
 #include "ParkingSpotType.cpp"
 #include "ParkingTicketType.cpp"
 #include "ParkingTicket.cpp"
-#include "../vehicles/Vehicle.cpp"
 #include "ParkingSpot.cpp"
 
 using namespace std;
@@ -42,5 +41,9 @@ public:
   void setFreeGate()
   {
     isFreeGate = true;
+  }
+  void details()
+  {
+    cout << "Entry Gate Details --- entryGateId" << entryGateId << " isFreeGate " << isFreeGate << endl;
   }
 };

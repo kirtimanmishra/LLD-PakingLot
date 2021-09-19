@@ -49,4 +49,12 @@ public:
   {
     this->exitTime = exitTime;
   }
+  string getEntryTime()
+  {
+    return entryTime;
+  }
+  string getEXitTime()
+  {
+    return exitTime;
+  }
 };
