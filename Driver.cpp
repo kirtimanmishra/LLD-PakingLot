@@ -73,4 +73,5 @@ int main()
     SmallSpot addedsS2 = admin.addSmallSpot(sS2);
     addedsS1.showSpotDetails();
     addedsS2.showSpotDetails();
+    cout << "" << endl;
 }
