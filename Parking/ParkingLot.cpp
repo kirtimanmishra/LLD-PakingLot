@@ -116,6 +116,25 @@ public:
     usedParkingSpace[parkingSpot.getParkingSpotId()] = parkingSpot;
     return parkingSpot;
   }
+  ParkingSpot deAllocateSpot(ParkingSpot parkingSpot)
+  {
+    usedParkingSpace.erase(parkingSpot.getParkingSpotId());
+    ParkingSpotType parkingSpotType = parkingSpot.getParkingSpotType();
+    cout << "parking spot type " << parkingSpotType << endl;
+    if (parkingSpotType == LARGE)
+    {
+      parkingSpace[LARGE].push_back(parkingSpot);
+    }
+    if (parkingSpotType == MEDIUM)
+    {
+      parkingSpace[MEDIUM].push_back(parkingSpot);
+    }
+    if (parkingSpotType == SMALL)
+    {
+      parkingSpace[SMALL].push_back(parkingSpot);
+    }
+    return parkingSpot;
+  }
 
   EntryGate addEntryGate(EntryGate entryGate)
   {
