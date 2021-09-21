@@ -8,8 +8,8 @@ using namespace std;
 class ParkingTicket
 {
   string parkingTicketId;
-  string entryTime;
-  string exitTime;
+  time_t entryTime;
+  time_t exitTime;
   string licenceNumber;
   ParkingSpotType parkingSpotType;
   string parkingSpotId;
@@ -29,7 +29,7 @@ public:
   {
     this->status = INACTIVE;
   }
-  void setEntryTime(string entryTime)
+  void setEntryTime(time_t entryTime)
   {
     this->entryTime = entryTime;
   }
@@ -45,16 +45,20 @@ public:
   {
     this->parkingSpotType = parkingSpotType;
   }
-  void setExitTime(string exitTime)
+  void setExitTime(time_t exitTime)
   {
     this->exitTime = exitTime;
   }
-  string getEntryTime()
+  time_t getEntryTime()
   {
     return entryTime;
   }
-  string getEXitTime()
+  time_t getEXitTime()
   {
     return exitTime;
+  }
+  string getParkingTicketId()
+  {
+    return parkingTicketId;
   }
 };

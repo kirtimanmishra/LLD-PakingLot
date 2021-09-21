@@ -24,8 +24,8 @@ public:
   ParkingTicket assignFreeTicket(ParkingTicket parkingTicket)
   {
     time_t now = time(0);
-    char *dt = ctime(&now);
-    parkingTicket.setExitTime(dt);
+    // char *dt = ctime(&now);
+    parkingTicket.setExitTime(now);
     parkingTicket.setDeactiveStatus();
     return parkingTicket;
   }
@@ -39,11 +39,15 @@ public:
   }
   float generatePayment(ParkingTicket parkingTicket, Vehicle vehicle)
   {
+    isFreeGate = false;
     PaymentRate paymentRate;
-    int entryTime = stoi(parkingTicket.getEntryTime());
-    int exitTime = stoi(parkingTicket.getEXitTime());
+    time_t entryTime = parkingTicket.getEntryTime();
+    time_t exitTime = parkingTicket.getEXitTime();
     float rate = paymentRate.getVehicleRate(vehicle);
-    float sum = (exitTime - entryTime) * rate * 100;
+    time_t diff = exitTime - entryTime;
+    if (diff == 0)
+      diff = 1;
+    float sum = diff * rate * 100;
     return sum;
   }
   void details()

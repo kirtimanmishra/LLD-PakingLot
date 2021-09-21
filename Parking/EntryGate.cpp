@@ -26,8 +26,8 @@ public:
     ParkingTicket parkingTicket(id);
     parkingTicket.setActiveStatus();
     time_t now = time(0);
-    char *dt = ctime(&now);
-    parkingTicket.setEntryTime(dt);
+    // char *dt = ctime(&now);
+    parkingTicket.setEntryTime(now);
     parkingTicket.setLicenceNumber(vehicle.getLicenceNumber());
     parkingTicket.setParkingSpotId(parkingSpot.getParkingSpotId());
     parkingTicket.setParkingType(parkingSpot.getParkingSpotType());

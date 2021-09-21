@@ -27,8 +27,6 @@ class ParkingLot
   EntryGate entryGate;
   ExitGate exitGate;
 
-  VehicleType vehicleType;
-
 public:
   ParkingLot()
   {
@@ -41,11 +39,6 @@ public:
     this->parkingSpace[SMALL] = {};
     this->entryGates = {};
     this->exitGates = {};
-  }
-  VehicleType getVehicleType(Vehicle vehicle)
-  {
-    this->vehicleType = vehicle.getVehicleType();
-    return vehicleType;
   }
   bool checkEntryGateFree()
   {
@@ -107,6 +100,7 @@ public:
       parkingSpot = *it;
       parkingSpace[LARGE].erase(it);
       usedParkingSpace[parkingSpot.getParkingSpotId()] = parkingSpot;
+      return parkingSpot;
     }
     else if (vehicleType == CAR)
     {
@@ -114,6 +108,7 @@ public:
       parkingSpot = *it;
       parkingSpace[MEDIUM].erase(it);
       usedParkingSpace[parkingSpot.getParkingSpotId()] = parkingSpot;
+      return parkingSpot;
     }
     auto it = parkingSpace[SMALL].begin();
     parkingSpot = *it;

@@ -51,27 +51,122 @@ int main()
     addedex2.details();
 
     LargeSpot lS1("lS1Id1");
-    LargeSpot lS2("lS2Id2");
 
     MediumSpot mS1("mS1Id1");
-    MediumSpot mS2("mS2Id2");
 
     SmallSpot sS1("sS1Id1");
-    SmallSpot sS2("sSId2");
 
     LargeSpot addedlS1 = admin.addLargeSpot(lS1);
-    LargeSpot addedlS2 = admin.addLargeSpot(lS2);
     addedlS1.showSpotDetails();
-    addedlS2.showSpotDetails();
 
     MediumSpot addedmS1 = admin.addMediumSpot(mS1);
-    MediumSpot addedmS2 = admin.addMediumSpot(mS2);
     addedmS1.showSpotDetails();
-    addedmS2.showSpotDetails();
 
     SmallSpot addedsS1 = admin.addSmallSpot(sS1);
-    SmallSpot addedsS2 = admin.addSmallSpot(sS2);
     addedsS1.showSpotDetails();
-    addedsS2.showSpotDetails();
-    cout << "" << endl;
+
+    int T = 3;
+    for (int i = 0; i < T; i++)
+    {
+        if (i == 0)
+        {
+            cout << " ---- >>>> BUS ----- " << endl;
+            cout << endl;
+            Bus bus("b1Id1");
+            cout << "Available spot for Bus " << admin.checkAvailableSpot(bus) << endl;
+            cout << "Availablility of Bus Entry Gate " << admin.checkEntryGateFree() << endl;
+            // If spot not available, go back
+            if (!admin.checkAvailableSpot(bus))
+            {
+                continue;
+            }
+            ParkingSpot parkingSpot = admin.allocateSpot(bus);
+            parkingSpot.showSpotDetails();
+            EntryGate entryGate = admin.AssignEntryGate();
+            ParkingTicket parkingTicket = entryGate.assignTicket(bus, parkingSpot);
+            cout << "Parking ticket details " << parkingTicket.getParkingTicketId() << endl;
+            entryGate.setFreeGate();
+            entryGate.details();
+
+            cout << "Availablility of Bus Exit Gate " << admin.checkExitGateFree() << endl;
+
+            ExitGate exitGate = admin.AssignExitGate();
+
+            parkingTicket = exitGate.assignFreeTicket(parkingTicket);
+            float payment = exitGate.generatePayment(parkingTicket, bus);
+            exitGate.setFreeGate();
+            exitGate.details();
+
+            cout << "Payment to be made " << payment << endl;
+        }
+        if (i == 1)
+        {
+            cout << " ---- >>>> CAR ----- " << endl;
+            cout << endl;
+
+            Car car("c1Id1");
+            cout << "Available spot for Car " << admin.checkAvailableSpot(car) << endl;
+            cout << "Availablility of Car Entry Gate " << admin.checkEntryGateFree() << endl;
+            // If spot not available, go back
+            if (!admin.checkAvailableSpot(car))
+            {
+                continue;
+            }
+            ParkingSpot parkingSpot = admin.allocateSpot(car);
+            parkingSpot.showSpotDetails();
+            EntryGate entryGate = admin.AssignEntryGate();
+            ParkingTicket parkingTicket = entryGate.assignTicket(car, parkingSpot);
+            cout << "Parking ticket details " << parkingTicket.getParkingTicketId() << endl;
+            entryGate.setFreeGate();
+            entryGate.details();
+
+            cout << "Availablility of CAR Exit Gate " << admin.checkExitGateFree() << endl;
+
+            ExitGate exitGate = admin.AssignExitGate();
+
+            parkingTicket = exitGate.assignFreeTicket(parkingTicket);
+            float payment = exitGate.generatePayment(parkingTicket, car);
+            exitGate.setFreeGate();
+            exitGate.details();
+
+            cout << "Payment to be made " << payment << endl;
+        }
+        if (i == 2)
+        {
+            cout << " ---- >>>> TRUCK ----- " << endl;
+            cout << endl;
+
+            Truck truck("t1Id1"); // Space Not Available, Entry gate Not Avaialble
+            cout << "Available spot for Truck " << admin.checkAvailableSpot(truck) << endl;
+            cout << "Availablility of Car Entry Gate " << admin.checkEntryGateFree() << endl;
+            // If spot not available, go back
+            if (!admin.checkAvailableSpot(truck))
+            {
+                continue;
+            }
+            ParkingSpot parkingSpot = admin.allocateSpot(truck);
+            parkingSpot.showSpotDetails();
+            EntryGate entryGate = admin.AssignEntryGate();
+            ParkingTicket parkingTicket = entryGate.assignTicket(truck, parkingSpot);
+            cout << "Parking ticket details " << parkingTicket.getParkingTicketId() << endl;
+            entryGate.setFreeGate();
+            entryGate.details();
+
+            cout << "Availablility of CAR Exit Gate " << admin.checkExitGateFree() << endl;
+
+            ExitGate exitGate = admin.AssignExitGate();
+
+            parkingTicket = exitGate.assignFreeTicket(parkingTicket);
+            float payment = exitGate.generatePayment(parkingTicket, truck);
+            exitGate.setFreeGate();
+            exitGate.details();
+
+            cout << "Payment to be made " << payment << endl;
+        }
+    }
+
+    // Bike bike("bk1Id1");  // Space Available, Entry gate Not Avaialble
+    // cout << "Available spot for car " << admin.checkAvailableSpot(car) << endl;
+    // cout << "Available spot for truck " << admin.checkAvailableSpot(truck) << endl;
+    // cout << "Available spot for bike " << admin.checkAvailableSpot(bike) << endl;
 }
