@@ -55,6 +55,7 @@ SmallSpot addedsS1 = admin.addSmallSpot(sS1);
 
 ParkingSpot Automate(Vehicle vehicle)
 {
+    // Checks for any incoming vehicle, no vehicle is exiting
     cout << "Available spot for  " << admin.checkAvailableSpot(vehicle) << endl;
     cout << "Availablility of  Entry Gate " << admin.checkEntryGateFree() << endl;
     // If spot not available, go back
@@ -86,6 +87,9 @@ ParkingSpot Automate(Vehicle vehicle)
 
 void Automate(Vehicle vehicle, ParkingSpot parkingSpot)
 {
+    // Checks for any botn incoming vehicle, and vehicle is exiting. That spot is getting free
+    parkingSpot.showSpotDetails();
+    cout << "given parking spot is getting free " << endl;
     cout << "Available spot for vehicle " << admin.checkAvailableSpot(vehicle) << endl;
     cout << "Availablility of  Entry Gate " << admin.checkEntryGateFree() << endl;
     admin.deAllocateSpot(parkingSpot);
@@ -162,7 +166,6 @@ int main()
             cout << endl;
             cout << " -- >>>> BUS wants to go out, Space Available for truck " << endl;
             Truck truck("t1Id1"); // Space Not Available, Entry gate Not Avaialble
-            Bus bus("b1Id1");
             Automate(truck, parkingSpot1);
         }
     }
