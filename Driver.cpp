@@ -122,7 +122,7 @@ int main()
         }
     }
 
-    Bike bike("bk1Id1"); // Space Available, Entry gate Not Avaialble
+    // Bike bike("bk1Id1"); // Space Available, Entry gate Not Avaialble
     // cout << "Available spot for car " << admin.checkAvailableSpot(car) << endl;
     // cout << "Available spot for truck " << admin.checkAvailableSpot(truck) << endl;
     // cout << "Available spot for bike " << admin.checkAvailableSpot(bike) << endl;
